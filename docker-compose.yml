@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  db:
+    build: ./DB
+    ports:
+      - "6602:3306"
+    volumes:
+      - ./DB/data:/var/lib/mysql
+  api:
+    build: ./API
+    environment:
+      DATABASE_HOST: 'db'
+    ports:
+     - "4000:4000"
+    depends_on:
+      - db
+    restart: on-failure
+
+  web:
+    image: php:apache
+    volumes:
+      - ./WEB:/var/www/html
+    ports:
+      - 5500:80
