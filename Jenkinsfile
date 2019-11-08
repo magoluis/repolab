@@ -1,12 +1,8 @@
 pipeline {
   agent any
-
-        stage('Despliegue') {
-
+  
+  stage('Despliegue') {
   }
-  stage('Desplie') {
-
-}
 
 
 
